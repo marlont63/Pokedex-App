@@ -67,15 +67,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
            // print(rows)
             
             
-            for row in rows {
-                
-                let pokeId = Int(row["id"]!)!
-                let name = row["identifier"]!
-                
-                let pokemon = Pokemon(name: name, pokedexId: pokeId)
-                
-                self.pokemons.append(pokemon)
-                
+             for row in rows {
+                if let pokeId = row["id"] as? Int, let pokeName = row["identifier"] {
+                    let poke = Pokemon(name: pokeName, pokedexId: pokeId)
+                    pokemons.append(poke)
+                }
             }
             
         }
